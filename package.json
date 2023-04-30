@@ -1,7 +1,7 @@
 {
-  "name": "ancestry-member-info",
+  "name": "ancestry-hint-aggregator",
   "version": "1.0.0",
-  "description": "Show date, not time passed, since user last visited.",
+  "description": "Show all hints from a single collection.",
   "main": "content.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
