@@ -4,13 +4,17 @@ const CURRENT_MODULE = URL_PATHS[1];
 const TREE_ID = URL_PATHS[3];
 const VIEWED_HINTS = new Set();
 
+function getUrlParameter(urlToSearch, urlParameter) {
+  return new URLSearchParams(urlToSearch.split('?')[1]).get(urlParameter);
+}
+
 function createHintAggregator(mutationTarget) {
   const AGGREGATE_FORMAT = `${ORIGIN}/hints/tree/${TREE_ID}/hints?`;
 
   const hintLink = mutationTarget.children[1].children[0].href;
   if (VIEWED_HINTS.has(hintLink)) return;
 
-  const DB_ID = new URLSearchParams(hintLink.split('?')[1]).get('dbid');
+  const DB_ID = getUrlParameter(hintLink, 'dbid');
   const urlParams = new URLSearchParams({
     hf: 'record',
     hs: 'last',
@@ -51,7 +55,13 @@ filterSection = document.querySelector(domScope);
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     isTargetElement = mutation.target.classList.contains(elementClass);
-    if (isTargetElement) {
+    hasExpectedDepth = mutation.target.children[1] !== undefined;
+    alreadyFiltered = getUrlParameter(window.location.href, 'hdbid') !== null;
+
+    // Don't display option to filter a collection if already filtered.
+    if (alreadyFiltered) return;
+
+    if (isTargetElement && hasExpectedDepth) {
       createHintAggregator(mutation.target);
     }
   });
