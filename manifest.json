@@ -1,0 +1,39 @@
+{
+    "manifest_version": 3,
+    "name": "Ancestry Hint Aggregator",
+    "description": "Show all hints from a single collection.",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.ancestry.com.au/hints/tree/*/hints*",
+                "https://www.ancestry.ca/hints/tree/*/hints*",
+                "https://www.ancestry.com/hints/tree/*/hints*",
+                "https://www.ancestry.de/hints/tree/*/hints*",
+                "https://www.ancestry.fr/hints/tree/*/hints*",
+                "https://www.ancestry.ie/hints/tree/*/hints*",
+                "https://www.ancestry.it/hints/tree/*/hints*",
+                "https://www.ancestry.mx/hints/tree/*/hints*",
+                "https://www.ancestry.no/hints/tree/*/hints*",
+                "https://www.ancestry.pl/hints/tree/*/hints*",
+                "https://www.ancestry.se/hints/tree/*/hints*",
+                "https://www.ancestry.co.uk/hints/tree/*/hints*",
+
+                "https://www.ancestry.com.au/family-tree/person/tree/*/person/*/hints*",
+                "https://www.ancestry.ca/family-tree/person/tree/*/person/*/hints*",
+                "https://www.ancestry.com/family-tree/person/tree/*/person/*/hints*",
+                "https://www.ancestry.de/family-tree/person/tree/*/person/*/hints*",
+                "https://www.ancestry.fr/family-tree/person/tree/*/person/*/hints*",
+                "https://www.ancestry.ie/family-tree/person/tree/*/person/*/hints*",
+                "https://www.ancestry.it/family-tree/person/tree/*/person/*/hints*",
+                "https://www.ancestry.mx/family-tree/person/tree/*/person/*/hints*",
+                "https://www.ancestry.no/family-tree/person/tree/*/person/*/hints*",
+                "https://www.ancestry.pl/family-tree/person/tree/*/person/*/hints*",
+                "https://www.ancestry.se/family-tree/person/tree/*/person/*/hints*",
+                "https://www.ancestry.co.uk/family-tree/person/tree/*/person/*/hints*"
+            ],
+            "run_at": "document_idle",
+            "js": ["content.js"]
+        }
+    ],
+    "version": "0.1"
+}
